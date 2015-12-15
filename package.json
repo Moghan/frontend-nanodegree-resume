@@ -1,0 +1,29 @@
+{
+  "name": "frontend-nanodegree-resume",
+  "version": "1.0.0",
+  "description": "1. Go to the [Javascript Basics course](https://www.udacity.com/course/ud804) and select \"View Course Materials.\"\r 2. Go through the videos and assignments in this course to learn the JavaScript necessary to build your resume.\r 3. Review your work against the Project Rubric (on the next page).\r 4. When you are satisfied with your project, submit it according to the Submission Instructions on the next page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moghan/frontend-nanodegree-resume.git"
+  },
+  "author": "Anders Kensby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moghan/frontend-nanodegree-resume/issues"
+  },
+  "homepage": "https://github.com/Moghan/frontend-nanodegree-resume#readme",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.1",
+    "jshint": "^2.8.0"
+  }
+}
