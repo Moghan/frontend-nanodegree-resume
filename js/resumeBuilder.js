@@ -220,13 +220,14 @@ work.display = function () {
 
 work.display();
 
-/*
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
 
 	logClicks(x,y);
 });
+/*
+
  
 function locationizer(work_obj) {
 	var jobLocationArray = [];
@@ -238,10 +239,6 @@ function locationizer(work_obj) {
 	return jobLocationArray;
 }
 
-
-
-
-bio.display();
 
 
 $("#mapDiv").append(googleMap);
