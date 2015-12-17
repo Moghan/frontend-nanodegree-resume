@@ -4,15 +4,14 @@
 	"contacts" : {
 		"mobile" : "+46 (0)70 260 96 94", 
 		"email" : "anders.kensby@gmail.com",
-		"github" : "moghan",
-		"twitter" : "no twitter",
-		"location" : "Arvika"
+		"github" : "https://github.com/Moghan",
+		"location" : "(flexible)"
 	},
 	"welcomeMessage" : "Feel free to have a look at my resume.",
 	"skills" : [
-	"Teamleader experience", "Outside the box"
+	"C# certificate", "HTML", "CSS", "JavaScript", "Teamleader experience", "Outside the box mentality"
 	],
-	"bioPic" : "http://placebear.com/220/220"
+	"bioPic" : "http://riots.se/me.jpg"
 }
 
 education = {
@@ -20,23 +19,15 @@ education = {
 	{
 		"name" : "Karlstads universitet",
 		"location" : "Karlstad",
-		"degree" : "BA",
-		"majors" : "CS",
-		"dates" : "2015",
-		"url" : "http://www.kau.se"
-	},
-	{
-		"name" : "Solberga",
-		"location" : "Arvika",
-		"degree" : "BA",
-		"majors" : "CS",
+		"degree" : "Degree of Bachelor of Science in Engineering",
+		"majors" : "Computer Science Engineering",
 		"dates" : "2015",
 		"url" : "http://www.kau.se"
 	}
 	],
 	"onlineCourses" : [
 		{
-			"title" : "Front-End Nanodegree",
+			"title" : "Front-End Web Developer Nanodegree",
 			"school" : "Udacity",
 			"date" : "2015",
 			"url" : "http://www.udacity.com"
@@ -48,59 +39,33 @@ work = {
 	"jobs" : [
 		{
 			"employer" : "Wermland Mechanics",
-			"title" : "Montör",
-			"location" : "Stockholm",
+			"title" : "Fitter",
+			"location" : "Töcksfors",
 			"dates" : "June 2015 -",			
-			"description" : "Brainless"
+			"description" : "Assembly of sheet metal."
 		},
 		{
 			"employer" : "REC Scanmodule",
-			"title" : "Team Leader",
-			"location" : "Göteborg",
+			"title" : "Team leader",
+			"location" : "Glava",
 			"dates" : "2008 - 2011",			
-			"description" : "Responsible for..."
-		},
-		{
-			"employer" : "ttttTEST",
-			"title" : "Team Leader",
-			"location" : "Malmö",
-			"dates" : "2008 - 2011",			
-			"description" : "Brainless"
+			"description" : "Support, educate, push Lean production, report."
 		}
-
 	]
 }
 
 project = {
 	"projects" : [
 		{
-			"title" : "ObT6",
-			"dates" : "2014",
-			"description" : "My first github project",
+			"title" : "Polymer",
+			"dates" : "2015-",
+			"description" : "First contact with Polymer",
 			"image" : "http://www.placebear.com/200/200"
 		},
 		{
 			"title" : "GeneralNeo",
 			"dates" : "2016-",
 			"description" : "EON battlefield emulator.",
-			"image" : "http://www.placebear.com/200/200"
-		},
-		{
-			"title" : "GeneralNeo",
-			"dates" : "2016-",
-			"description" : "EON battlefield emulator.",
-			"image" : "http://www.placebear.com/200/200"
-		},
-		{
-			"title" : "ObT6",
-			"dates" : "2014",
-			"description" : "My first github project",
-			"image" : "http://www.placebear.com/200/200"
-		},
-		{
-			"title" : "3rd",
-			"dates" : "1984",
-			"description" : "Great movie.",
 			"image" : "http://www.placebear.com/200/200"
 		}
 	]
@@ -113,7 +78,7 @@ project = {
 bio.display = function () {
 	//Skills
 	if (bio.skills.length > 0) {
-		$("#header").append(HTMLskillsStart);
+		$("#header-info").append(HTMLskillsStart);
 
 		for (var i = 0 ; i < bio.skills.length ; i++) {
 			var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
@@ -132,6 +97,10 @@ bio.display = function () {
 		$("#topContacts").append(formattedContact);
 	}
 
+	//Pic
+	var formattedBiopic = HTMLbioPic.replace("%data%", bio.bioPic);
+	$("#bioPic").append(formattedBiopic);
+
 	//Role
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	$("#header").prepend(formattedRole);
@@ -141,7 +110,7 @@ bio.display = function () {
 	$("#header").prepend(formattedName);
 
 	//Welcome message
-	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcome_message);
+	var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 	$("#header").append(formattedWelcomeMsg);
 	console.log(formattedWelcomeMsg);
 

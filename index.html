@@ -47,11 +47,12 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   Google Map to your resume!
   -->
 <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
-  <div id="main">
+  <div id="main" class="container">
     <!--
     Everything from here to the <script> tag below is the skeleton of your
     website. Your code will add information to each of the sections of the
@@ -59,14 +60,22 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     display by looking at the id or at what's written between the <h2> tags.
     -->
     <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
+      <div class="row">
+      <div id="bioPic" class="col-md-4"></div>
+  <div id="header-info" class="col-md-8">
+        <ul id="topContacts" class="flex-box"></ul>
+        
+        </div>
+      </div>
     </div>
     <div style="clear: both;"></div>
     <div id="workExperience" class="gray">
       <h2>Work Experience</h2>
     </div>
-    <div id="projects">
+    <div id="projects-wrapper" class="row">
       <h2>Projects</h2>
+      <div id="projects" class="flex-box">
+      </div>
     </div>
     <div id="education" class="gray">
       <h2>Education</h2>
@@ -81,11 +90,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
   </div>
 
-  <!--
-  The next line tells the browser where to download the JavaScript file you'll be
-  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-  dynamically when this website, index.html, is opened.
-  -->
+  
+  
   <script src="js/resumeBuilder.js"></script>
 
 
