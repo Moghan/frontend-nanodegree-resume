@@ -34,12 +34,6 @@ gulp.task('browser-sync', function() {
     });
 });
 
-/*gulp.task('sass', function() {
-	return gulp.src('scss/*.scss')
-		.pipe(sass))
-		.pipe(gulp.dest('css'));
-});*/
-
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')

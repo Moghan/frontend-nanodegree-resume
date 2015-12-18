@@ -1,18 +1,18 @@
- bio = {
+bio = {
 	"name" : "Anders Kensby",
 	"role" : "Webdeveloper",
 	"contacts" : {
 		"mobile" : "+46 (0)70 260 96 94", 
 		"email" : "anders.kensby@gmail.com",
 		"github" : "https://github.com/Moghan",
-		"location" : "(flexible)"
+		"location" : "Töcksfors"
 	},
 	"welcomeMessage" : "Feel free to have a look at my resume.",
 	"skills" : [
 	"C# certificate", "HTML", "CSS", "JavaScript", "Teamleader experience", "Outside the box mentality"
 	],
 	"bioPic" : "http://riots.se/me.jpg"
-}
+};
 
 education = {
 	"schools" : [
@@ -33,7 +33,7 @@ education = {
 			"url" : "http://www.udacity.com"
 		}
 	]
-}
+};
 
 work = {
 	"jobs" : [
@@ -52,7 +52,7 @@ work = {
 			"description" : "Support, educate, push Lean production, report."
 		}
 	]
-}
+};
 
 project = {
 	"projects" : [
@@ -69,11 +69,7 @@ project = {
 			"image" : "http://www.placebear.com/200/200"
 		}
 	]
-}
-
-
-
-
+};
 
 bio.display = function () {
 	//Skills
@@ -115,15 +111,12 @@ bio.display = function () {
 	console.log(formattedWelcomeMsg);
 
 
-}
+};
 
 bio.display();
 
-
-
-
 education.display = function () {
-	for (school in education.schools)
+	for (var school in education.schools)
 	{
 		$("#education").append(HTMLschoolStart);
 
@@ -135,16 +128,16 @@ education.display = function () {
 
 
 		var formattedEntry = formattedName + formattedDegree + formattedDates + formattedMajor;
-console.log(formattedEntry);
+		console.log(formattedEntry);
 		$(".education-entry:last").append(formattedEntry);
 	}
-}
+};
 
 education.display();
 
 
 project.display = function () {
-	for (prj in project.projects)
+	for (var prj in project.projects)
 	{
 		$("#projects").append(HTMLprojectStart);
 
@@ -158,19 +151,13 @@ project.display = function () {
 console.log(formattedEntry);
 		$(".project-entry:last").append(formattedEntry);
 	}
-}
+};
 
 project.display();
 
-
-
-
-
-
-
 work.display = function () {
 	console.log("work.display");
-	for (job in work.jobs)
+	for (var job in work.jobs)
 	{
 		$("#workExperience").append(HTMLworkStart);
 
@@ -185,7 +172,7 @@ work.display = function () {
 
 		$(".work-entry:last").append(formattedWorkEntry);
 	}
-}
+};
 
 work.display();
 
@@ -195,22 +182,19 @@ $(document).click(function(loc) {
 
 	logClicks(x,y);
 });
-/*
-
  
-function locationizer(work_obj) {
+/*function locationizer(work_obj) {
 	var jobLocationArray = [];
 
-	for (job in work.jobs) {
+	for (var job in work.jobs) {
 		jobLocationArray.push(work.jobs[job].location);
 	}
 
 	return jobLocationArray;
 }
 
-
+var locArr = locationizer(work);
+*/
 
 $("#mapDiv").append(googleMap);
 
-var locArr = locationizer(work);
-*/
