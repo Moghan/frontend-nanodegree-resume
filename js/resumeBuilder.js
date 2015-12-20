@@ -168,43 +168,42 @@ education.display = function () {
 	if(education.onlineCourses.length > 0) {
 		$('.education-entry:last').append(HTMLonlineClasses);
 		$.each(education.onlineCourses, function(index, course) {
-			$('.education-entry:last').append(HTMLonlineTitle.replace('%data%', course.title));
-			$('.education-entry:last').append(HTMLonlineSchool.replace('%data%', course.school));
-			$('.education-entry:last').append(HTMLonlineDates.replace('%data%', course.date));
-			$('.education-entry:last').append(HTMLonlineURL.replace('%data%', course.url));
+			$('.education-entry:last').append(HTMLonlineTitle.replace('%data%', course.title))
+			.append(HTMLonlineSchool.replace('%data%', course.school))
+			.append(HTMLonlineDates.replace('%data%', course.date))
+			.append(HTMLonlineURL.replace('%data%', course.url));
 		});
 	}
 };
 
 projects.display = function () {
-	$.each(projects.projects, function(prj, index) {
+	$.each(projects.projects, function(index, prj) {
 		$('#projects').append(HTMLprojectStart);
 
-		var formattedTitle = HTMLprojectTitle.replace('%data%', projects.projects[prj].title);
-		var formattedDates = HTMLprojectDates.replace('%data%', projects.projects[prj].dates);
-		var formattedDescription = HTMLprojectDescription.replace('%data%', projects.projects[prj].description);
-
+		$('.project-entry:last').append(HTMLprojectTitle.replace('%data%', prj.title))
+		.append(HTMLprojectDates.replace('%data%', prj.dates))
+		.append(HTMLprojectDescription.replace('%data%', prj.description))
 		//Images is an array, but at this point I only want to use one picture.
-		var formattedImage = HTMLprojectImage.replace('%data%', projects.projects[prj].images[0]);
-
-		var formattedEntry = formattedTitle + formattedDates + formattedDescription + formattedImage;
-		$('.project-entry:last').append(formattedEntry);
+		.append(HTMLprojectImage.replace('%data%', prj.images[0]));
 	});
 };
 
 work.display = function () {
-	$.each(work.jobs, function(job, index) {
+	$.each(work.jobs, function(index, job) {
 		$('#workExperience').append(HTMLworkStart);
 
-		var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
-		var formattedDates = HTMLworkDates.replace('%data%', work.jobs[job].dates);
-		var formattedLocation = HTMLworkLocation.replace('%data%', work.jobs[job].location);
-		var formattedDescription = HTMLworkDescription.replace('%data%', work.jobs[job].description);
+		$('.work-entry:last').append(HTMLworkEmployer.replace('%data%', job.employer) + HTMLworkTitle.replace('%data%', job.title))
 
-		var formattedWorkEntry = formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription;
+//	-------------  Secondary solution  -------------------
+//		$('.work-entry:last').append(HTMLworkEmployer.replace('%data%', job.employer)
+//		.append(HTMLworkTitle.replace('%data%', job.title)); 
+// WTF! This secondary solution(above) creates the following. I don't get it! 
+//		<a href="#">Wermland Mechanics</a>
+//		- Fitter
 
-		$('.work-entry:last').append(formattedWorkEntry);
+		.append(HTMLworkDates.replace('%data%', job.dates))
+		.append(HTMLworkLocation.replace('%data%', job.location))
+		.append(HTMLworkDescription.replace('%data%', job.description));
 	});
 };
 
