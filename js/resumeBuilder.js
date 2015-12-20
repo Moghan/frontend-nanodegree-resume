@@ -22,13 +22,14 @@ bio = {
 		'mobile' : '+46 (0)70 260 96 94', 
 		'email' : 'anders.kensby@gmail.com',
 		'github' : 'https://github.com/Moghan',
+		'twitter' : 'I do not have twitter!',
 		'location' : 'Töcksfors'
 	},
 	'welcomeMessage' : 'Feel free to have a look at my resume.',
 	'skills' : [
 	'C# certificate', 'HTML', 'CSS', 'JavaScript', 'Teamleader experience', 'Outside the box mentality'
 	],
-	'bioPic' : 'http://riots.se/me.jpg'
+	'biopic' : 'http://riots.se/me.jpg'
 };
 
 education = {
@@ -37,8 +38,16 @@ education = {
 		'name' : 'Karlstads universitet',
 		'location' : 'Karlstad',
 		'degree' : 'Degree of Bachelor of Science in Engineering',
-		'majors' : 'Computer Science Engineering',
-		'dates' : '2015',
+		'majors' : ['Computer Science Engineering', 'test multiple majors', 'sec test'],
+		'dates' : 2015,
+		'url' : 'http://www.kau.se'
+	},
+	{
+		'name' : 'Karlstads universitet',
+		'location' : 'Karlstad',
+		'degree' : 'Degree of Bachelor of Science in Engineering',
+		'majors' : ['Computer Science Engineering'],
+		'dates' : 2015,
 		'url' : 'http://www.kau.se'
 	}
 	],
@@ -46,7 +55,19 @@ education = {
 		{
 			'title' : 'Front-End Web Developer Nanodegree',
 			'school' : 'Udacity',
-			'date' : '2015',
+			'date' : 2015,
+			'url' : 'http://www.udacity.com'
+		},
+		{
+			'title' : 'Front-End Web Developer Nanodegree',
+			'school' : 'Udacity',
+			'date' : 2015,
+			'url' : 'http://www.udacity.com'
+		},
+		{
+			'title' : 'Front-End Web Developer Nanodegree',
+			'school' : 'Udacity',
+			'date' : 2015,
 			'url' : 'http://www.udacity.com'
 		}
 	]
@@ -71,19 +92,19 @@ work = {
 	]
 };
 
-project = {
+projects = {
 	'projects' : [
 		{
 			'title' : 'Polymer',
 			'dates' : '2015-',
 			'description' : 'First contact with Polymer',
-			'image' : "http://www.placebear.com/200/200"
+			'images' : ["http://www.placebear.com/200/200"]
 		},
 		{
 			'title' : 'GeneralNeo',
 			'dates' : '2016-',
 			'description' : 'EON battlefield emulator.',
-			'image' : "http://www.placebear.com/200/200"
+			'images' : ["http://www.placebear.com/200/200"]
 		}
 	]
 };
@@ -108,10 +129,11 @@ bio.display = function () {
 		formattedContact = formattedContact.replace('%contact%', keyNames[i]);
 
 		$('#topContacts').append(formattedContact);
+		$('#footerContacts').append(formattedContact);
 	}
 
 	//Pic
-	var formattedBiopic = HTMLbioPic.replace('%data%', bio.bioPic);
+	var formattedBiopic = HTMLbioPic.replace('%data%', bio.biopic);
 	$('#bioPic').append(formattedBiopic);
 
 	//Role
@@ -125,48 +147,53 @@ bio.display = function () {
 	//Welcome message
 	var formattedWelcomeMsg = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
 	$('#header').append(formattedWelcomeMsg);
-	console.log(formattedWelcomeMsg);
 };
 
 education.display = function () {
-	for (var school in education.schools)
-	{
+	$.each(education.schools, function(index, school){
 		$('#education').append(HTMLschoolStart);
 
-		var formattedName = HTMLschoolName.replace('%data%', education.schools[school].name);
-		var formattedDegree = HTMLschoolDegree.replace('%data%', education.schools[school].degree);
-		var formattedDates = HTMLschoolDates.replace('%data%', education.schools[school].dates);
-		var formattedLocation = HTMLschoolLocation.replace('%data%', education.schools[school].location);
-		var formattedMajor = HTMLschoolMajor.replace('%data%', education.schools[school].majors);
-
-
-		var formattedEntry = formattedName + formattedDegree + formattedDates + formattedMajor;
-		console.log(formattedEntry);
+		var formattedName = HTMLschoolName.replace('%data%', school.name);
+		var formattedDegree = HTMLschoolDegree.replace('%data%', school.degree);
+		var formattedDates = HTMLschoolDates.replace('%data%', school.dates);
+		var formattedLocation = HTMLschoolLocation.replace('%data%', school.location);
+		var formattedEntry = formattedName + formattedDegree + formattedDates;
 		$('.education-entry:last').append(formattedEntry);
+
+		$.each(school.majors, function(index, major) {
+			$('.education-entry:last').append(HTMLschoolMajor.replace('%data%', major));
+		});
+	});
+		
+	if(education.onlineCourses.length > 0) {
+		$('.education-entry:last').append(HTMLonlineClasses);
+		$.each(education.onlineCourses, function(index, course) {
+			$('.education-entry:last').append(HTMLonlineTitle.replace('%data%', course.title));
+			$('.education-entry:last').append(HTMLonlineSchool.replace('%data%', course.school));
+			$('.education-entry:last').append(HTMLonlineDates.replace('%data%', course.date));
+			$('.education-entry:last').append(HTMLonlineURL.replace('%data%', course.url));
+		});
 	}
 };
 
-project.display = function () {
-	for (var prj in project.projects)
-	{
+projects.display = function () {
+	$.each(projects.projects, function(prj, index) {
 		$('#projects').append(HTMLprojectStart);
 
-		var formattedTitle = HTMLprojectTitle.replace('%data%', project.projects[prj].title);
-		var formattedDates = HTMLprojectDates.replace('%data%', project.projects[prj].dates);
-		var formattedDescription = HTMLprojectDescription.replace('%data%', project.projects[prj].description);
-		var formattedImage = HTMLprojectImage.replace('%data%', project.projects[prj].image);
+		var formattedTitle = HTMLprojectTitle.replace('%data%', projects.projects[prj].title);
+		var formattedDates = HTMLprojectDates.replace('%data%', projects.projects[prj].dates);
+		var formattedDescription = HTMLprojectDescription.replace('%data%', projects.projects[prj].description);
 
+		//Images is an array, but at this point I only want to use one picture.
+		var formattedImage = HTMLprojectImage.replace('%data%', projects.projects[prj].images[0]);
 
 		var formattedEntry = formattedTitle + formattedDates + formattedDescription + formattedImage;
-console.log(formattedEntry);
 		$('.project-entry:last').append(formattedEntry);
-	}
+	});
 };
 
 work.display = function () {
-	console.log('work.display');
-	for (var job in work.jobs)
-	{
+	$.each(work.jobs, function(job, index) {
 		$('#workExperience').append(HTMLworkStart);
 
 		var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
@@ -175,13 +202,11 @@ work.display = function () {
 		var formattedLocation = HTMLworkLocation.replace('%data%', work.jobs[job].location);
 		var formattedDescription = HTMLworkDescription.replace('%data%', work.jobs[job].description);
 
-
 		var formattedWorkEntry = formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription;
 
 		$('.work-entry:last').append(formattedWorkEntry);
-	}
+	});
 };
-
 
 $(document).click(function(loc) {
 	var x = loc.pageX;
@@ -192,19 +217,7 @@ $(document).click(function(loc) {
  
 $('#mapDiv').append(googleMap);
 
-function footerDisplay () {
-	var keyNames = Object.keys(bio.contacts);
-	
-	for (var i = 0 ; i < keyNames.length ; i++) {
-		var formattedContact = HTMLcontactGeneric.replace('%data%', bio.contacts[keyNames[i]]);
-		formattedContact = formattedContact.replace('%contact%', keyNames[i]);
-
-		$('#footerContacts').append(formattedContact);
-	}
-}
-
-footerDisplay();
 bio.display();
 education.display();
-project.display();
+projects.display();
 work.display();
